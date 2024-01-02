@@ -10,9 +10,7 @@ keyString = input
   .split("")
   .map((char) => {
     if (/\w/i.test(char)) {
-      i = i === key.length ? 0 : i;
-      let keyVal = key[i];
-      ++i;
+      let keyVal = key[i++ % key.length];
       return keyVal;
     }
     return char;
