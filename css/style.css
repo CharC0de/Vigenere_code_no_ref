@@ -1,0 +1,116 @@
+
+h1{
+    font-size: 35px;
+}
+
+#mainArea{
+    height: 80vh;
+    width: 100%;
+}
+.headerLink{
+    color: white;
+}
+
+#mainArea #formArea{
+    width: 100%;
+}
+
+#searchBar{
+    width: 100%;
+}
+
+#headerArea{
+    width: 100%;
+}
+
+main .productContainer{
+    width: 75%;
+    overflow: auto;
+}
+
+.productContainer >.card{
+    display: inline-block;
+}
+main #navSideBar{
+  right: 0;
+    position: fixed;
+    width: 20%;
+    height: 60vh;
+    background-color: white;
+}
+#navButton{
+    background-color: rgba(115, 255, 80, 0.591);
+    border-radius: 100px;
+    display: none;
+    position: fixed;
+    right: 0;
+}
+.prodImage{
+    object-fit: cover;
+    height: 200px;
+}
+.pfp{
+    object-fit: cover;
+}
+@media only screen and (max-width: 788.98px){
+    main .productContainer{
+        width: 100%;
+    }
+    
+    main #navSideBar{
+        transform: translateX(100%);
+        width: 200px;
+    }
+    #navButton{
+        display: block;
+    }
+}
+@media only screen and (min-width: 767.98px) {
+    
+    #mainArea #formArea{
+        width: 75%;
+    }
+
+    #mainArea #searchBar{
+        width: 75%;
+    }
+
+    #navSideBar{
+        transform: translateX(0%);
+    }
+
+   
+}
+
+@media only screen and (min-width: 991.98px) {
+    
+    #mainArea #formArea{
+        width: 50%;
+    }
+
+     #searchBar{
+        width: 50%;
+    }
+    
+}
+
+@media only screen and (min-width: 1999.98px) {
+    
+    #mainArea #formArea{
+        width: 30%;
+    }
+
+     #searchBar{
+        width: 30%;
+    }
+}
+@media only screen and (min-width: 1399.98px) {
+    
+    #mainArea #formArea{
+        width: 27%;
+    }
+
+     #searchBar{
+        width: 27%;
+    }
+}

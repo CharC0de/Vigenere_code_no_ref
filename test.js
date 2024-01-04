@@ -1,4 +1,4 @@
-const vigenere = (input, key, isDecrypt) => {
+export const vigenere = (input, key, isDecrypt) => {
   //use of alphabet array to use index values as basis for calculation of encrypted and decrypted value
   const alpha = [
     "a",
@@ -58,7 +58,6 @@ const vigenere = (input, key, isDecrypt) => {
 
     return char;
   });
-  console.log(keyArr.join(""));
   //ENCRYPTION / DECRYPTION
   return inputArr
     .map((char, i) => {
@@ -97,21 +96,3 @@ const vigenere = (input, key, isDecrypt) => {
     })
     .join("");
 };
-//decryption
-console.log(
-  vigenere(
-    (input =
-      "Ucxgirhxec ou Hnmecrp ens Ipghcdwsgn,,, dq Wojisirc Esmlxeamnth...."),
-    (key = "apple"),
-    (isDecrypt = true)
-  )
-);
-//encryption
-console.log(
-  vigenere(
-    (input =
-      "University of Science and Technology,,, of Southern Philippines...."),
-    (key = "apple"),
-    (isDecrypt = false)
-  )
-);

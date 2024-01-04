@@ -1,44 +1,61 @@
+const keyGen = (input) => {
+  if (input.length == 0) {
+    document.querySelector("#error").innerHTML =
+      "input some values on the password first";
+    document.querySelector("#key").type = "text";
+    return "";
+  }
+  max = Math.floor(Math.random() * input.length);
+  key = "";
+  for (let index = 0; index < max; index++) {
+    key += alpha[Math.floor(Math.random() * alpha.length)];
+  }
+  return key;
+};
+
+const alpha = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
 const vigenere = (input, key, isDecrypt) => {
   //use of alphabet array to use index values as basis for calculation of encrypted and decrypted value
-  const alpha = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
+
   //all other given strings are turned into arrays to easily make use of iterative functions
   inputArr = input.split("");
   //word detector(regular expression) since sentences could contain non alphabetical character/s
   wordDetector = /\w/i;
+  digitDetector = /\d/;
   //increment is used increase value to increase if the character of an array is
   increment = 0;
 
   //KEY UTILIZATION
   //create an array of repeating characters of key for input: hello, new world!! key: apple, app leapp!!
   keyArr = input.split("").map((char) => {
-    if (wordDetector.test(char)) {
+    if (wordDetector.test(char) && !digitDetector.test(char)) {
       //if character is alphabetical then process happens
       //increment % array length will allow iteration on key array to work without going out of bounds
       //because modulo is a division that tries to get the remainder
@@ -62,7 +79,7 @@ const vigenere = (input, key, isDecrypt) => {
   //ENCRYPTION / DECRYPTION
   return inputArr
     .map((char, i) => {
-      if (wordDetector.test(char) && !isDecrypt) {
+      if (wordDetector.test(char) && !digitDetector.test(char) && !isDecrypt) {
         //encryption calculation
         //(index of input character in alphabet + index of keyArr character in alphabet array) % alphabet array length
         if (char === char.toUpperCase()) {
@@ -72,7 +89,11 @@ const vigenere = (input, key, isDecrypt) => {
         }
         sum = alpha.indexOf(char) + alpha.indexOf(keyArr[i]);
         return alpha[sum % alpha.length];
-      } else if (wordDetector.test(char) && isDecrypt) {
+      } else if (
+        wordDetector.test(char) &&
+        !digitDetector.test(char) &&
+        isDecrypt
+      ) {
         //((index of input character in alphabet - index of keyArr character in alphabet array)+ alphabet array length) % alphabet array length
         //for decryptor + array length is needed to allow decrement from max index if index is lower than zero % array length is still needed since index difference can still be positve
         //note the while loop gives assurance that index difference that are  equal or greater than -array.length will still be dealt with

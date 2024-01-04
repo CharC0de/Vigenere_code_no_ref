@@ -11,51 +11,71 @@
     <title>Vigenere Encryption</title>
   </head>
   <body>
-    <h1 id="title">Decryption</h1>
-    <div>
-      Input
-      <input type="text" name="" id="input" />
-    </div>
-    <div>
-      Key:
-      <input type="text" name="" id="key" />
-    </div>
-    <div class="dropdown open">
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="triggerId"
-        data-bs-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Mode
-      </button>
-      <div class="dropdown-menu" aria-labelledby="triggerId">
-        <button
-          class="dropdown-item"
-          onclick="document.querySelector('#title').innerHTML='Encryption'; document.querySelector('#exec').value='encrypt'"
-        >
-          Encrypt
-        </button>
-        <button
-          class="dropdown-item"
-          onclick="document.querySelector('#title').innerHTML='Decryption'; document.querySelector('#exec').value='decrypt'"
-        >
-          Decrypt
-        </button>
+    <header
+      class="container-fluid text-bg-success d-flex align-items-end justify-content-between"
+    >
+      <img
+        src="webImg/White_and_Green_Minimalist_Photo_Frame_Merry_Christmas_Family_Greeting_Card__1_-removebg-preview.png"
+        alt="logo"
+        width="200"
+        height="75"
+      />
+      <div class="m-2">
+        <a href="login.html" class="headerLink">Logout</a>
       </div>
-    </div>
+    </header>
+    <div
+      class="d-flex flex-column justify-content-center align-items-center container"
+      id="mainArea"
+    >
+      <section class="border p-4" id="formArea">
+        <h1 id="title">Decryption</h1>
+        <div>
+          Input
+          <input class="mb-4" type="text" name="" id="input" />
+        </div>
+        <div>
+          Key:
+          <input class="mb-4" type="text" name="" id="key" />
+        </div>
+        <div class="dropdown open mb-4">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="triggerId"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Mode
+          </button>
+          <div class="dropdown-menu" aria-labelledby="triggerId">
+            <button
+              class="dropdown-item"
+              onclick="document.querySelector('#title').innerHTML='Encryption'; document.querySelector('#exec').value='encrypt'"
+            >
+              Encrypt
+            </button>
+            <button
+              class="dropdown-item"
+              onclick="document.querySelector('#title').innerHTML='Decryption'; document.querySelector('#exec').value='decrypt'"
+            >
+              Decrypt
+            </button>
+          </div>
+        </div>
 
-    <input
-      id="exec"
-      type="button"
-      value="decrypt"
-      onclick=" document.querySelector('#output').innerHTML=vigenere(document.querySelector('#input').value,document.querySelector('#key').value, (isDecrypt=document.querySelector('#title').innerHTML=='Decryption'))"
-    />
-    <div>
-      <h1>Output:</h1>
-      <p id="output"></p>
+        <input
+          id="exec"
+          type="button"
+          value="decrypt"
+          onclick=" document.querySelector('#output').innerHTML=vigenere(document.querySelector('#input').value,document.querySelector('#key').value, (isDecrypt=document.querySelector('#title').innerHTML=='Decryption'))"
+        />
+        <div>
+          <h1>Output:</h1>
+          <p id="output"></p>
+        </div>
+      </section>
     </div>
 
     <script src="script.js"></script>
