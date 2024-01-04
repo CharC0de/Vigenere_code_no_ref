@@ -44,6 +44,9 @@ const authUser = async (formData) => {
           ? (userData[key] = vigenere(userData[key], passKey, true))
           : (userData[key] = userData[key]);
       });
+      else{
+
+      }
       console.log(userData);
     }
   } catch (e) {
